@@ -32,9 +32,12 @@ const Home = () => {
         <div className="p-4 mb-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold">Book List</h1>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mb-2 px-4 rounded">
+            <Link
+              to={`/books/create`}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+            >
               Add Book
-            </button>
+            </Link>
           </div>
           <table className="w-full border-collapse border">
             <thead>
