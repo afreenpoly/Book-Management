@@ -1,14 +1,26 @@
 import Express  from "express";
 import { Book } from "../model/bookmodel.js";
+import cors from "cors";
 
 const router = Express.Router();
+router.use(cors());
 
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
+  try {
+    const book = await Book.find();
+    return res.status(201).send(book);
+  } catch (error) {
+    console.error("Error Fetching");
+    return res.status(500).send({ error: "Failed to fetch" }); // Send an error response
+  }
+});
+
+router.post("/create", async (req, res) => {
   try {
     const newBook = {
       title: req.body.title,
       author: req.body.author,
-      publishyear: req.body.publishyear,
+      yearPublished: req.body.yearPublished,
     };
 
     //The Book.create() method is a part of the Mongoose library.
@@ -27,15 +39,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const book = await Book.find();
-    return res.status(201).send(book);
-  } catch (error) {
-    console.error("Error Fetching");
-    return res.status(500).send({ error: "Failed to fetch" }); // Send an error response
-  }
-});
+
 
 //:id is used for pattern matching
 // /books/abc will also match, and req.params.id will be "abc".

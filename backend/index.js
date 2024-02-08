@@ -3,12 +3,12 @@ import { PORT, uri } from "./config.js";
 import mongoose from "mongoose";
 import booksRoute from  "./routes/booksRoute.js";
 import cors from "cors";
-
+import bodyParser from "body-parser";
 
 const app = express();
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+
+app.use(bodyParser.json()); // Parse JSON requests
 
 app.get("/", (req, res) => {
   return res.send("Welcome");
