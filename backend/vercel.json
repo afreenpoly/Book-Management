@@ -1,6 +1,3 @@
 {
-  "builds": [
-    { "src": "backend/*.js", "use": "@vercel/node" }
-  ],
-  "routes": [{ "src": "/book", "dest": "backend/bookroutes.js" }]
+  "builds": [{ "src": "backend/*.js", "use": "@now/node" }]
 }
