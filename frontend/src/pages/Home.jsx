@@ -14,13 +14,13 @@ const Home = () => {
       .then((res) => {
         setBooks(res.data);
         setLoading(false);
+        console.log(res.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
   }, []); // Empty dependency array to run the effect only once
-
 
   return (
     <div className="p-4 mb-4">
@@ -34,7 +34,7 @@ const Home = () => {
             <h1 className="text-2xl font-bold">Book List</h1>
             <Link
               to={`/books/create`}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-2 rounded mr-2"
             >
               Add Book
             </Link>
@@ -60,21 +60,21 @@ const Home = () => {
                   <td className="border px-4 py-2">
                     <div className="flex justify-between">
                       <Link
-                        to={`/books/details/${book.id}`}
+                        to={`/books/details/${book._id}`}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                       >
                         Details
                       </Link>
 
                       <Link
-                        to={`/books/edit/${book.id}`}
+                        to={`/books/edit/${book._id}`}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                       >
                         Edit
                       </Link>
 
                       <Link
-                        to={`/books/delete/${book.id}`}
+                        to={`/books/delete/${book._id}`}
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                       >
                         Delete
